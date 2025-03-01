@@ -141,7 +141,11 @@ def main():
     uploaded_file = st.file_uploader("Choose a video file", type=['mp4', 'avi', 'mov'])
     
     if uploaded_file is not None:
-        st.video(uploaded_file)
+        st.markdown(
+         f'<video width="480" controls><source src="data:video/mp4;base64,{uploaded_file.getvalue().decode()}" type="video/mp4"></video>',
+         unsafe_allow_html=True
+      )
+
         
         analysis_type = st.radio(
             "Choose analysis type:",
