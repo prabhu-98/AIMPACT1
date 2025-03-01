@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 import time
-from moviepy.editor import VideoFileClip
+from moviepy.video.io.VideoFileClip import VideoFileClip
 import speech_recognition as sr
 import google.generativeai as genai
 import cv2
