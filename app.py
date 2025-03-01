@@ -58,30 +58,17 @@ def analyze_speech(video_file):
             model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
             
             speech_prompt = f"""
-            Provide a comprehensive analysis of this speech transcript:
-
-            # 1. Content Analysis:
-            # - Main topics and themes
-            # - Key messages and arguments
-            # - Structure and flow
-            # - Use of evidence or examples
-
-            1. Delivery Analysis:
-            - Language and vocabulary
-            - Clarity and coherence
-            - Tone and style
-
-            2. Overall Assessment:
-            - Strengths
-            - Areas for improvement
-            - Specific recommendations
-
+            Analyze the following speech transcript:
+                - **Key Topics & Themes**
+                - **Main Arguments & Messages**
+                - **Clarity, Tone & Language**
+                - **Strengths & Areas for Improvement**
+                - **Actionable Suggestions**
             Transcript:
-            {transcription}.
-            give precise(in 2 lines) response for every field.
-            """
+            {transcription}
+          """
             
-            speech_analysis = model.generate_content(speech_prompt).text
+        speech_analysis = model.generate_content(speech_prompt).text
             
         st.subheader("Speech Analysis")
         st.markdown(speech_analysis)
@@ -118,17 +105,14 @@ def analyze_body_language(video_file):
             
             for i, frame in enumerate(frames):
                 prompt = """
-                Analyze this frame for body language and non-verbal communication:
-                1. Facial expressions and emotions
-                2. Eye contact and gaze direction
-                3. Body posture and positioning
-                4. Hand gestures and movements
-                5. Overall confidence and presence
                 
-                Provide specific observations and suggestions for improvement make.
-                The reponse should be  consize and well structured.
-                give precise(in 2 lines) response for every field
-                """
+                            Analyze this frame for body language:
+                            - Facial expressions & emotions
+                            - Eye contact & gaze direction
+                            - Body posture & hand gestures
+                            - Confidence level & improvements
+                            Provide a structured and concise response.
+                 """
                 response = model_vision.generate_content([prompt, frame])
                 frame_analyses.append(f"Frame {i+1} Analysis:\n{response.text}")
                 progress_bar.progress((i + 1) / len(frames))
