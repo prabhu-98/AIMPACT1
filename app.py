@@ -145,21 +145,20 @@ def main():
            st.write("Note: Video is displayed in a compact format.")
 
         
-        analysis_type = st.radio(
+           analysis_type = st.radio(
             "Choose analysis type:",
             ["Speech Analysis", "Body Language Analysis", "Both"],
             horizontal=True
-        )
-        
-        if st.button("Start Analysis"):
-            if analysis_type in ["Speech Analysis", "Both"]:
-                st.header("🎤 Speech Analysis")
-                analyze_speech(uploaded_file)
+           )
+           if st.button("Start Analysis"):
+               if analysis_type in ["Speech Analysis", "Both"]:
+                    st.header("🎤 Speech Analysis")
+                    analyze_speech(uploaded_file)
                 
-            if analysis_type in ["Body Language Analysis", "Both"]:
-                st.header("👁️ Body Language Analysis")
-                uploaded_file.seek(0)  # Reset file pointer
-                analyze_body_language(uploaded_file)
+               if analysis_type in ["Body Language Analysis", "Both"]:
+                    st.header("👁️ Body Language Analysis")
+                    uploaded_file.seek(0)  # Reset file pointer
+                    analyze_body_language(uploaded_file)
 
 if __name__ == "__main__":
     main()
