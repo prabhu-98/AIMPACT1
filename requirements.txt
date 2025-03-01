@@ -1,0 +1,6 @@
+streamlit
+moviepy
+SpeechRecognition
+google-generativeai
+opencv-python-headless
+Pillow
