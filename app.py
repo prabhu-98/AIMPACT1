@@ -106,7 +106,7 @@ def analyze_body_language(video_file):
             
             for i, frame in enumerate(frames):
                 prompt = """
-                             Give a precise answer in under 200 words
+                             Give a precise answer in under 100 words
                             Analyze this frame for body language:
                             - Facial expressions & emotions
                             - Eye contact & gaze direction
