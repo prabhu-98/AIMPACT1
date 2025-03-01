@@ -141,24 +141,23 @@ def main():
     uploaded_file = st.file_uploader("Choose a video file", type=['mp4', 'avi', 'mov'])
     
     if uploaded_file is not None:
-           st.video(uploaded_file, format="video/mp4", start_time=0)
-           st.write("Note: Video is displayed in a compact format.")
-
+        st.video(uploaded_file)
         
-           analysis_type = st.radio(
+        analysis_type = st.radio(
             "Choose analysis type:",
             ["Speech Analysis", "Body Language Analysis", "Both"],
             horizontal=True
-           )
-           if st.button("Start Analysis"):
-               if analysis_type in ["Speech Analysis", "Both"]:
-                    st.header("🎤 Speech Analysis")
-                    analyze_speech(uploaded_file)
+        )
+        
+        if st.button("Start Analysis"):
+            if analysis_type in ["Speech Analysis", "Both"]:
+                st.header("🎤 Speech Analysis")
+                analyze_speech(uploaded_file)
                 
-               if analysis_type in ["Body Language Analysis", "Both"]:
-                    st.header("👁️ Body Language Analysis")
-                    uploaded_file.seek(0)  # Reset file pointer
-                    analyze_body_language(uploaded_file)
+            if analysis_type in ["Body Language Analysis", "Both"]:
+                st.header("👁️ Body Language Analysis")
+                uploaded_file.seek(0)  # Reset file pointer
+                analyze_body_language(uploaded_file)
 
 if __name__ == "__main__":
     main()
