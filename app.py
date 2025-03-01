@@ -58,6 +58,7 @@ def analyze_speech(video_file):
             model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
             
             speech_prompt = f"""
+            Give a precise answer in under 200 words
             Analyze the following speech transcript:
                 - **Key Topics & Themes**
                 - **Main Arguments & Messages**
@@ -105,7 +106,7 @@ def analyze_body_language(video_file):
             
             for i, frame in enumerate(frames):
                 prompt = """
-                
+                             Give a precise answer in under 200 words
                             Analyze this frame for body language:
                             - Facial expressions & emotions
                             - Eye contact & gaze direction
