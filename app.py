@@ -60,24 +60,25 @@ def analyze_speech(video_file):
             speech_prompt = f"""
             Provide a comprehensive analysis of this speech transcript:
 
-            1. Content Analysis:
-            - Main topics and themes
-            - Key messages and arguments
-            - Structure and flow
-            - Use of evidence or examples
+            # 1. Content Analysis:
+            # - Main topics and themes
+            # - Key messages and arguments
+            # - Structure and flow
+            # - Use of evidence or examples
 
-            2. Delivery Analysis:
+            1. Delivery Analysis:
             - Language and vocabulary
             - Clarity and coherence
             - Tone and style
 
-            3. Overall Assessment:
+            2. Overall Assessment:
             - Strengths
             - Areas for improvement
             - Specific recommendations
 
             Transcript:
-            {transcription}
+            {transcription}.
+            give precise(in 2 lines) response for every field.
             """
             
             speech_analysis = model.generate_content(speech_prompt).text
@@ -126,6 +127,7 @@ def analyze_body_language(video_file):
                 
                 Provide specific observations and suggestions for improvement make.
                 The reponse should be  consize and well structured.
+                give precise(in 2 lines) response for every field
                 """
                 response = model_vision.generate_content([prompt, frame])
                 frame_analyses.append(f"Frame {i+1} Analysis:\n{response.text}")
