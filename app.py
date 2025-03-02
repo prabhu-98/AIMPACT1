@@ -1,5 +1,6 @@
 # app.py
 import streamlit as st
+st.set_page_config(page_title="Video Analysis Tool", page_icon="🎥", layout="wide")
 import time
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import speech_recognition as sr
@@ -133,7 +134,6 @@ def analyze_body_language(video_file):
         st.error(f"Error: {str(e)}")
 
 def main():
-    st.set_page_config(page_title="Video Analysis Tool", page_icon="🎥", layout="wide")
     
     st.title("🎥 Video Analysis Tool")
     st.write("Upload a video to analyze speech and body language.")
@@ -141,7 +141,10 @@ def main():
     uploaded_file = st.file_uploader("Choose a video file", type=['mp4', 'avi', 'mov'])
     
     if uploaded_file is not None:
-        st.video(uploaded_file)
+        # Define the layout with columns
+        col1, col2, col3 = st.columns([1, 1, 1])  # Adjust the relative widths as needed
+        with col2:
+            st.video(uploaded_file)
         
         analysis_type = st.radio(
             "Choose analysis type:",
